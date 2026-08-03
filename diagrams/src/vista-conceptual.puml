@@ -1,0 +1,31 @@
+@startuml vista-conceptual
+skinparam packageStyle rectangle
+left to right direction
+
+package "Usuarios" as Usuarios {
+  [Conductores]
+  [Peatones]
+}
+
+package "Sensores" as Sensores {
+  [Cámaras de tráfico]
+  [Sensores de flujo vehicular]
+  [Sensores en semáforos]
+}
+
+package "Sistema Central\n(Smart Mobility System)" as Central {
+  [Procesamiento y análisis\nde datos]
+  [Gestión de tráfico\ny semáforos]
+  [Gestión de rutas\ny alertas]
+}
+
+package "Servicios externos" as Externos {
+  [Proveedores de mapas]
+  [Servicios de clima]
+}
+
+Usuarios <--> Central : consultas de rutas\ny notificaciones
+Sensores --> Central : datos en tiempo real
+Central <--> Externos : información\ncomplementaria
+
+@enduml
